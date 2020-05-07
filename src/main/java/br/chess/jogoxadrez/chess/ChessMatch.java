@@ -1,6 +1,9 @@
 package br.chess.jogoxadrez.chess;
 
 import br.chess.jogoxadrez.boardgame.Board;
+import br.chess.jogoxadrez.boardgame.Position;
+import br.chess.jogoxadrez.chess.pieces.King;
+import br.chess.jogoxadrez.chess.pieces.Rook;
 
 /*Partida de Xadrez
  * Class onde vai ter as regra do jogo de xadrez*/
@@ -12,6 +15,7 @@ public class ChessMatch {
 	 * Dimensão do tabuleiro de xadrez */
 	public ChessMatch() {
 		board = new Board(8, 8);
+		initialSetup();//vou ter que chamar no inicio da minha partida
 	}
 	
 	/*UPCASTING e  Downcasting:
@@ -40,5 +44,12 @@ public class ChessMatch {
 			}
 		}
 		return mat;//quando terminar os dois for return a minha matriz mat, da minha partida de xadrez
+	}
+	
+	/*Responsavel por iniciar uma partida de xadrez, colocando as peças no board*/
+	public void initialSetup() {
+		board.placePiece(new Rook(board, Color.WHITE), new Position(2, 1));
+		board.placePiece(new King(board, Color.BLACK), new Position(0, 4));
+		board.placePiece(new King(board, Color.WHITE), new Position(7, 4));
 	}
 }

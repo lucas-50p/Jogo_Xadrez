@@ -10,8 +10,6 @@ public class ChessPiece extends Piece{
 	
 	private Color color;
 	
-	public ChessPiece() {
-	}
 
 
 	/*Contructor que recebe o board(tabuleiro)*/
