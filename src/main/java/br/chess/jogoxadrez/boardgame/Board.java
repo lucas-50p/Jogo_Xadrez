@@ -23,7 +23,7 @@ public class Board {
 		return rows;
 	}
 
-	/*Retirar Não seja alterado set rows columns */
+	/*Retirar "Set" Não seja alterado set rows columns */
 	
 	public int getColumns() {
 		return columns;
