@@ -11,6 +11,9 @@ public class Board {
 	}
 	
 	public Board(int rows, int columns) {
+		if (rows < 1 || columns < 1) {/*quantida linhas tem que ser pelo menos 1 */
+			throw new BoardException("Erro ao criar quadro: deve haver pelo menos 1 linha e 1 coluna");
+		}
 		this.rows = rows;
 		this.columns = columns;
 		pieces = new Piece[rows][columns];//Colocar manualmente
@@ -20,32 +23,58 @@ public class Board {
 		return rows;
 	}
 
-	public void setRows(int rows) {
-		this.rows = rows;
-	}
-
+	/*Retirar Não seja alterado set rows columns */
+	
 	public int getColumns() {
 		return columns;
 	}
 
-	public void setColumns(int columns) {
-		this.columns = columns;
-	}
 	
 	/*Ele vai retorn a minha matriz pieces*/
 	public Piece piece(int row, int column) {
+		if (!positionExists(row, column)) {
+			throw new BoardException("Posição fora do tabuleiro");
+		}
 		return pieces[row][column];
 	}
 	
 	/*Sobrecarga
 	 * retorna peça pela posição */
 	public Piece piece(Position position) {
+		if (!positionExists(position)) {
+			throw new BoardException("Posição fora do tabuleiro");
+		}
 		return pieces[position.getRow()][position.getColumn()];
 	}
 	
 	/*colocar peça*/
 	public void placePiece(Piece piece, Position position) {
+		if (thereIsAPiece(position)) {
+			throw new BoardException("Já existe uma peça na posição " + position);
+		}
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
+	}
+	/*Metodo aux
+	 * Mais facil testa pela linha e coluna, que pela posição
+	 * a linha tem que ser maior que 0 - row >=0
+	 * essa linha tem que ser menor que linha do tabuleiro  - row < rows
+	 * */
+	private boolean positionExists(int row, int column) {
+		return row >= 0 && row < rows && column >= 0 && column < columns;
+	}
+	
+	/*Essa posição existe*/
+	public boolean positionExists(Position position) {
+		return positionExists(position.getRow(), position.getColumn());
+	}
+	
+	/*Essa tem peça ness posição
+	 * piece e do metodo da sobrcarga(class board) */
+	public boolean thereIsAPiece(Position position) {
+		if (!positionExists(position)) {
+			throw new BoardException("Posição fora do tabuleiro");
+		}
+		return piece(position) != null;
 	}
 }
