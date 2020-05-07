@@ -29,8 +29,8 @@ public class Position {
 		this.column = column;
 	}
 
-	//imprimir a posição da tela
-	@Override
+	/*imprimir a posição da tela*/
+	@Override/*É a implementação de um método de uma superclasse na subclasse*/
 	public String toString() {
 		return row + ", " + column;
 	}

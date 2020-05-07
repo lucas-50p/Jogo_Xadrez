@@ -32,6 +32,15 @@ public class Board {
 		this.columns = columns;
 	}
 	
-	/*Pices por enquanto no*/
+	/*Ele vai retorn a minha matriz pieces*/
+	public Piece piece(int row, int column) {
+		return pieces[row][column];
+	}
+	
+	/*Sobrecarga
+	 * retorna peça pela posição */
+	public Piece piece(Position position) {
+		return pieces[position.getRow()][position.getColumn()];
+	}
 	
 }
