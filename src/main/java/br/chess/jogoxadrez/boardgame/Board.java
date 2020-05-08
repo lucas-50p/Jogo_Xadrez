@@ -55,6 +55,22 @@ public class Board {
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
 	}
+	
+	/*Remove Peça do xadrez da posição do tabuleiro*/
+	public Piece removePiece(Position position) {
+		if (!positionExists(position)) {
+			throw new BoardException("Posição não existe no tabuleiro");
+		}
+		if (piece(position) == null) {
+			return null;
+		}
+		Piece aux = piece(position);
+		aux.position = null;
+		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
+	}
+	
+	
 	/*Metodo aux
 	 * Mais facil testa pela linha e coluna, que pela posição
 	 * a linha tem que ser maior que 0 - row >=0
