@@ -47,6 +47,14 @@ public class ChessMatch {
 		return mat;//quando terminar os dois for return a minha matriz mat, da minha partida de xadrez
 	}
 	
+	/*possiveis movimentos
+	 * Para que eu possa print na aplicação a partir da posição de origem*/
+	public boolean [][] possibleMoves(ChessPosition sourcePosition){
+		Position position = sourcePosition.toPosition();
+		validateSourcePosition(position);
+		return board.piece(position).possibleMoves();
+	}
+	
 	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
