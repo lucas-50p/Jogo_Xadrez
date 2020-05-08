@@ -51,6 +51,7 @@ public class ChessMatch {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
 		validateSourcePosition(source);//validar se realmente, nesta posição existe um peça
+		validateTagetPosition(source, target);//posição destino
 		Piece capturedPiece = makeMove(source, target);//makeMove: Realizar o movimento da peça
 		return (ChessPiece) capturedPiece;
 	}
@@ -69,6 +70,14 @@ public class ChessMatch {
 		}
 		if (!board.piece(position).isThereAnyPossibleMove()) {//Se no tiver nenhum movimento possivel
 			throw new ChessException("Não há movimentos possíveis para a peça escolhida");
+		}
+	}
+	
+	/*Se para peça de origem, a posição de destino, no é um movimento possivel
+	 * Significa que eu no posso mexer para lá posição de destino*/
+	private void validateTagetPosition(Position source, Position target) {
+		if (!board.piece(source).possibleMove(target)) {
+			throw new ChessException("A peça escolhida não pode se mover para a posição alvo");
 		}
 	}
 	

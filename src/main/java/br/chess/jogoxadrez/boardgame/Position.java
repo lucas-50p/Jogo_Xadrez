@@ -28,6 +28,11 @@ public class Position {
 	public void setColumn(int column) {
 		this.column = column;
 	}
+	
+	public void setValues(int row, int column) {
+		this.row = row;
+		this.column = column;
+	}
 
 	/*imprimir a posição da tela*/
 	@Override/*É a implementação de um método de uma superclasse na subclasse*/

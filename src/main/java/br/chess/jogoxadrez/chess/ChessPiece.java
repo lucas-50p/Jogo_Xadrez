@@ -2,6 +2,7 @@ package br.chess.jogoxadrez.chess;
 
 import br.chess.jogoxadrez.boardgame.Board;
 import br.chess.jogoxadrez.boardgame.Piece;
+import br.chess.jogoxadrez.boardgame.Position;
 
 /*Peça de xadrez
  * Ela é uma subClass da Peece*/
@@ -29,7 +30,10 @@ public abstract class ChessPiece extends Piece{
 	}*/
 
 	
-	
-	
+	/*Se tem peça adversaria*/
+	protected boolean isThereOpponentPiece(Position position) {
+		ChessPiece p = (ChessPiece)getBoard().piece(position);
+		return p != null && p.getColor() != color;
+	}
 
 }
