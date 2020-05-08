@@ -67,6 +67,9 @@ public class ChessMatch {
 		if (!board.thereIsAPiece(position)) {//Se no existir peça nesta posição
 			throw new ChessException("Não há nenhuma peça na posição de origem");
 		}
+		if (!board.piece(position).isThereAnyPossibleMove()) {//Se no tiver nenhum movimento possivel
+			throw new ChessException("Não há movimentos possíveis para a peça escolhida");
+		}
 	}
 	
 	/*coordenadas  do xadrez*/

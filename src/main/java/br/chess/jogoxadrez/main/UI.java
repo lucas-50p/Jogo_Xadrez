@@ -36,6 +36,7 @@ public class UI {
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 	*/
 	
+	
 	/*Ler a posição do xadrez*/
 	public static ChessPosition readChesPosition(Scanner sc) {
 		try {
@@ -71,4 +72,6 @@ public class UI {
 		}
 		System.out.print(" ");
 	}
+
+	
 }

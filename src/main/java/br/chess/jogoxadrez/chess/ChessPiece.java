@@ -5,7 +5,7 @@ import br.chess.jogoxadrez.boardgame.Piece;
 
 /*Peça de xadrez
  * Ela é uma subClass da Peece*/
-public class ChessPiece extends Piece{
+public abstract class ChessPiece extends Piece{
 	
 	
 	private Color color;
